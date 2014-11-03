@@ -98,10 +98,8 @@
       var remove = this.remove;
       if (!remove.stickitWrapped) {
         this.remove = function() {
-          var ret = this;
           this.unstickit();
-          if (remove) ret = remove.apply(this, arguments);
-          return ret;
+          return remove ? remove.apply(this, arguments) : this;
         };
       }
       this.remove.stickitWrapped = true;
